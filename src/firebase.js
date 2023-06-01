@@ -1,17 +1,26 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAT4kc6msKJI_-RvZzTogB2bWc9Dl56nzc",
-  authDomain: "netflix-react-clone-b190b.firebaseapp.com",
-  projectId: "netflix-react-clone-b190b",
-  storageBucket: "netflix-react-clone-b190b.appspot.com",
-  messagingSenderId: "1002591955839",
-  appId: "1:1002591955839:web:b7232373a40b40315cc84a"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain:process.env.REACT_APP_FIREBASE_AUTH_DOMAIN ,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER ,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Firebase Authentication and get a reference to the service
+export const auth = getAuth(app);
+
+export const db = getFirestore(app)
+
